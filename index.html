@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        
+    </style>
+</head>
+<body>
+    <pre>
+        Q1 Create 2 objects - parent and child. Attach methods to parent and use those methods in child object using parents prototype
+
+        function Human(name,age){
+            this.name=name;
+            this.age=age;
+        }
+        Human.prototype.getNameAndAge=function(){
+            return `Name is : ${this.name} And Age is : ${this.age}`;
+        }
+
+        function Man(name,age){
+            Human.call(this,name,age);
+        }
+        
+        let HumanObject=Object.create(Human)
+        Man.prototype=HumanObject.prototype;
+
+        let data =new Man("Aniket",22);
+        console.log(data.getNameAndAge());
+        
+       
+       
+        Q2 Write code to explain prototype chaining
+
+        function Human(name,age){
+            this.name=name;
+            this.age=age;
+        }
+        Human.prototype.getNameAndAge=function(){
+            return `Name is : ${this.name} And Age is : ${this.age}`;
+        }
+
+        function Man(name,age){
+            Human.call(this,name,age);
+        }
+        
+        let HumanObject=Object.create(Human)
+        Man.prototype=HumanObject.prototype;
+
+        let data =new Man("Aniket",22);
+        console.log(data.getNameAndAge());
+
+        the above code shows that Man has its own prototype as well as Human prototype this concept is known as prototype chaining 
+        prototype chaining allow to inherite propert of object into another object
+
+        Q3 Add a method to calculate sum of all elements in Array in array's protype, use that method to calculate sum for multiple arrays
+
+        Array.prototype.sum=function(){
+            return this.reduce((acc,iniVal)=>{return acc+=iniVal},0)
+        }
+        let a=[1,2,3];
+        console.log(a.sum());
+
+
+        Q4 Write a JavaScript function to retrieve all the names of object's own and inherited properties.
+        function Human(name,age){
+            this.name=name;
+            this.age=age;
+        }
+        Human.prototype.getNameAndAge=function(){
+            return `Name is : ${this.name} And Age is : ${this.age}`;
+        }
+        let data=new Human("Aniket",22)
+        console.log(data)
+
+        data object will have all the values which are inherited or its own 
+    </pre>
+</body>
+</html>
